@@ -1,9 +1,10 @@
 #include <stdio.h>
 
-// name: Brent Hailpern
-// email: b.hailpern@northeastern.edu
+// name: Katie Davenport
+// email: davenport.k@northeastern.edu
+// phone: 781-801-3875
 
 int main() {
-  printf("Hello World.  This is Brent.\n");
+  printf("Hello World.  This is Katie.\n");
   return 0;
 }
