@@ -1,6 +1,6 @@
-#include <stdio.h>
+ #include <stdio.h>
 
-// name: Katie Davenport
+// name: Kathryn ("Katie") Davenport
 // email: davenport.k@northeastern.edu
 // phone: 781-801-3875
 
