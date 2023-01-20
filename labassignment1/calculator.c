@@ -28,7 +28,7 @@ int main()
 	break;
     case 4:
 	if(num2 == 0) {
-	printf("*** You cannot divide by zero ***\n");
+	printf("Divide by zero error\n");
 	} else { 
 	answer = num1 / num2;      // Check no remainder 
 	int remainder = num1 % num2; // Check modulo 
@@ -37,7 +37,7 @@ int main()
 	}
 	break;
     default:
-	printf("Invalid input\n");
+	printf("Invalid option\n");
 	break;
 	break;
   } 
