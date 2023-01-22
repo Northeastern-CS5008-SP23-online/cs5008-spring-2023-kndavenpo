@@ -1,5 +1,6 @@
 // name: Katie Davenport
 // email: davenport.k@northeastern.edu
+
 #include <stdio.h>   // stardard input/output library
 #include <stdbool.h> // standard boolean library: bool, true, false
 
@@ -34,16 +35,21 @@ bool isFull (int* s, int t) {
 // tp is a pointer to int so access it with *tp
 void push(int v, int* s, int* tp) {
   // put v onto the top of the stack s unless it is already full
+  if (s != NULL) {
   if (!isFull(s,*tp)) {
                 (*tp)++;
                 s[*tp] = v;}
   else {printf("*** attempt to push %d onto full stack ***\n", v);}
+  } else {
+  printf("The array is null");
+  }
 }
 
 // Update top(t) so it is passed by reference
 int pop (int* s, int* tp) {
   // return the top entry in the stack unless stack is empty
   // update s and *tp -- requires top to be passed by reference!
+  if (s != NULL) {
   int returnval = 0;
   if (!isEmpty(s, *tp)) {
         returnval = s[*tp];
@@ -52,6 +58,10 @@ int pop (int* s, int* tp) {
         printf("*** attempt to pop empty stack ***\n");
   }
   return returnval;
+  } else {
+  printf("The array is null");
+  return 0;
+  }
 }
 
 int main () {
