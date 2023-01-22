@@ -1,8 +1,6 @@
 //Katie Davenport
 //davenport.k@northeastern.edu
 
-// ERROR: Segmentation fault 
-
 /*C Program to read and print the n employee details using structure and dynamic memory allocation*/
 #include <stdio.h>
 #include <stdlib.h>
@@ -21,24 +19,23 @@ typedef struct employee
 void readData(int n, employee_t* s)
 {
   int i;
-
   for(i=0;i<n;i++){
     printf("Enter the employee's employeeID, Name, Designation, and Department: \n");   
-    scanf("%d %s %s %s", s->empId, s->Name, s->Designation, s->Dept);
+    scanf("%d %s %s %s", &s->empId, s->Name, s->Designation, s->Dept); 
     s++; 
   }
 }
 
 /* Function to print the employee details*/
-void display(int n, employee_t * s)
+void display(int n, employee_t* s)
 {
   int i;
-  //thisEmpl_p = &(employee_t[i]); -- DO SOMETHING LIKE THIS?  
  
-  for(i=0;i<n;i++) {
-  printf("The details of Employee i %d: /n");  
-  printf("Employee id %d, name %s, designation %s, dept %s\n",
+  for(i=0; i<n; i++) {
+  printf("The details of Employee %d: \n", i+1 );  
+  printf("EmpId: %d\nName: %s\nDesignation: %s\nDept: %s\n\n",
     	s->empId, s->Name, s->Designation, s->Dept);   
+  s++; 
   }   
 }
 
@@ -60,7 +57,7 @@ employee_t * s = (employee_t*)malloc(n * sizeof(employee_t));
     readData(n,s);
     display(n,s);
     free(s);
-    return 0;
-  }
+}
+    return 0;  
 }
 
