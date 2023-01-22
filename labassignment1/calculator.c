@@ -38,8 +38,7 @@ int main()
 	break;
     default:
 	printf("Invalid option\n");
-	break;
-	break;
+	break;	
   } 
     return 0;
 }
