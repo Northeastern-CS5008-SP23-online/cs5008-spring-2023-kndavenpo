@@ -10,7 +10,6 @@ int stack[MAXSIZE];
 
 // s is an int array, t is top index
 bool isEmpty (int* s, int t) {
-  // check that the array is not null
   // returns true if t = -1
   if (t < 0) {
   return true;
@@ -21,7 +20,6 @@ bool isEmpty (int* s, int t) {
 
 // s is an int array, t is top index
 bool isFull (int* s, int t) {
-  // check that the array is not null
   // returns true if no more room in the stack
   if (t >= MAXSIZE-1) {
   return true;
