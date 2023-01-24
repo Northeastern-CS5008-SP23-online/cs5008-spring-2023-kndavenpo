@@ -28,7 +28,7 @@ bool isFull (int* s, int t) {
   }
 }
 
-// Update top(t) so it is passed by reference
+// Update top(t)  so it is passed by reference
 // S is an array so inside the push function you will access with s[i]
 // tp is a pointer to int so access it with *tp
 void push(int v, int* s, int* tp) {
