@@ -1,8 +1,11 @@
+// Name: Katie Davenport
+// Email: davenport.k@northeastern.edu
+
 #include <stdio.h>
 #define N 8 //Max. capacity of Queue
 
-static int rear=-1;
-static int front=-1;
+static int rear=-1;  // global variable
+static int front=-1; // global variable
 /*----To check if the queue is empty-------*/
 int isempty()
 {   
@@ -34,16 +37,37 @@ int peek(int *arr)
     }
 /*---To insert the elements into the queue------*/
 void enqueue(int data, int *arr)
-{
- //insert your code here
+{ 	  
+	if(isfull()){
+	printf("Queue is full\n");
+	return;
+	}	
+	//increment the rear index and put data there
+	rear++;
+	arr[rear] = data;
+	printf("Enqueued data is: %d\n", data);
 
+
+ //full when rear is n-1.
  
 }
 /*----Function to remove the elements from the queue----*/
 int dequeue(int *arr)
 {   
     //insert your code here
-
+    //use front index to remove. We cam overwrite the element - we do not need to free 
+	int i;
+	if(isempty()){
+	printf("The array is empty");
+	return -1;
+	}
+	
+	int temp = arr[0];    // put the front position in the loop 
+	for( i=0; i<rear; i++){
+		arr[i] = arr[i+1];
+	}
+	rear--;
+	return temp;		
 }
 /*---Function to display the elements of the queue-------*/
 void display(int *arr)
@@ -55,8 +79,8 @@ void display(int *arr)
         return;
      }
     else {
-        
-        for(i=front+1; i<=rear; i++)
+       
+        for( i=front+1; i<=rear; i++)
         {
             printf("%d ",arr[i]);
         }
@@ -67,6 +91,7 @@ void display(int *arr)
 /*-----Main program-----*/
 int main()
     {
+    int i;
     int arr[N];//array in which queue will live
 /* insert 8 items */
     display(arr);
@@ -81,8 +106,8 @@ int main()
     enqueue(8,arr);
     display(arr);
     enqueue(9,arr);
-    for(int i=0;i<N-1;i++){
-    printf("dequeued element is: %d\n",dequeue(arr));
+    for( i=0; i<N-1; i++){
+    printf("Dequeued element is: %d\n",dequeue(arr));
     }
     display(arr);
     printf("The element at the front of the queue is: %d\n",peek(arr));
