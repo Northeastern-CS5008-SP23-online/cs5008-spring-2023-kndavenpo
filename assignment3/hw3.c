@@ -1,5 +1,5 @@
-// name: <your name here>
-// email: <your email here>
+// name: Katie Davenport
+// email: davenport.k@northeastern.edu
 
 #include <stdio.h>   // stardard input/output library
 #include <stdbool.h> // standard boolean library: bool, true, false
@@ -90,23 +90,26 @@ bool isEmpty(queue_t* q_p) {
 // function to add a new node with data d to tail of the queue
 void enqueue(queue_t* q_p, int d) {
   node_t* n_p = NULL; // temp node pointer
-  
+  node_t* new_node = newNode(d); // create a new node with data d 
+
   if (q_p != NULL) {
 
     if (isEmpty(q_p)) {
-      // queue is empty so insertion is easy
+      // The new node is both the head and the tail of the queue 	
+      	q_p->head_p = new_node;  
+	q_p->tail_p = new_node;  	      
 
-      // ***** INSERT YOUR CODE HERE *****
-      
     } else {
       // queue is not empty
-
-      // ***** INSERT YOUR CODE HERE *****
+	n_p = q_p->tail_p; 	// temp node pointer is tail node   
+	new_node->right_p = n_p;// new node's right_p is address of tail pointer 
+	n_p->left_p = new_node;	// tail node's left pointer is now address of new node 
+	q_p->tail_p = new_node;	// change queue's tail_p to the new node 
     } 
   }
   
   return;
-};
+}
 
 // function to take the node off the head of the queue and return its value
 int dequeue(queue_t* q_p) {
@@ -121,13 +124,15 @@ int dequeue(queue_t* q_p) {
 
       if (q_p->head_p  == q_p->tail_p) {      
 	// only one node in the queue, clear queue head and tail 
-
-	// ***** INSERT YOUR CODE HERE *****
+	q_p->head_p = NULL;
+	q_p->tail_p = NULL;
 	
       } else {
 	// mulitple nodes in queue, clean up head pointer and new head of queue
-
-	// ***** INSERT YOUR CODE HERE *****
+	n_p = q_p->head_p;			// temp node pointer is head node 
+	node_t* second_node = n_p->left_p;	// get address of second node in queue	
+	second_node->right_p = NULL;		// change second node's right pointer to NULL
+	q_p->head_p = second_node;		// change second node to be head node  
 
       }
 	
