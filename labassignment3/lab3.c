@@ -36,10 +36,8 @@ int main()
     //Insertion Sort 
     for (i=1; i<10; i++) {	
 	for (j=0; j<i; j++){
-	int counter = 0;
-	if (arr[i] <= arr[j] && counter == 0){
+	if (arr[i] <= arr[j]){
 		swap(&arr[i], &arr[j]);
-		counter++;
 		}
 	}	
     }
