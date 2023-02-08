@@ -33,11 +33,11 @@ int main()
 	*b = temp;
     }
 	    
-    //Insertion Sort 
+    //Insertion Sort
     for (i=1; i<10; i++) {	
-	for (j=0; j<i; j++){
-	if (arr[i] <= arr[j]){
-		swap(&arr[i], &arr[j]);
+	for (j=i-1; j>=0; j--){
+	if (arr[j+1] <= arr[j]){
+		swap(&arr[j+1], &arr[j]);
 		}
 	}	
     }
