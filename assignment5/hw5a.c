@@ -123,7 +123,6 @@ int main(){
 
   int i;             // loop variable
   int j;	     // loop variable
-  int smallest;      // current smallest element
 
   //seed random numbers
   srand((unsigned)time(NULL));
