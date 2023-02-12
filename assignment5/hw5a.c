@@ -1,5 +1,5 @@
-// name: <your name here>
-// email: <your email here>
+// name: Katie Davenport 
+// email: davenport.k@northeastern.edu
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -36,14 +36,62 @@ void mergeIt(
 	   int leftStart,
 	   int leftStop,
 	   int rightStart,
-	   int rightStop) {
-  
+	   int rightStop){
 
-  // ADD YOUR CODE HERE
-  
+// Declare variables for pointers 
+int i, j, k;
+
+// Create a copy of the left and right arrays 
+// Find size for each array 
+int ln = leftStop - leftStart + 1; 	//size of left array
+int rn = rightStop - leftStop;		//size of right array
+
+// Declare array of chars of correct size 
+char L[ln]; 	// copy of left
+char R[rn];	// copy of right 
+
+// Copy elements in left 
+for(i = 0; i < ln; i++){
+	L[i] = data[leftStart + i];
+	}
+
+// Copy elements in right 
+for(j= 0; j < rn; j++){
+	R[j] = data[rightStart + j];
+	}
+
+// Set initial pointer values for each array
+i = 0;		// left array
+j = 0;		// right array 
+k = leftStart;	// full array 
+
+// Pick smaller from sub-arrays and add to full array until we reach the end of either L or R 
+while (i < ln && j < rn){
+	if(L[i] <= R[j]){
+		data[k] = L[i];
+		i++;
+	} else {
+		data[k] = R[j];
+		j++;
+	}
+	k++;
+} 
+
+// Add any remaining elements from either array to the full array  
+while (i < ln) {
+	data[k] = L[i];
+	i++;
+	k++;
+	}
+
+while (j < rn) {
+	data[k] = R[j];
+	j++;
+	k++;
+	} 
+
   return;
 }
-
 
 
 // break data array up into halves until down to single elements
@@ -70,14 +118,11 @@ void msort(char* data, int left, int right) {
   return;
 }
 
-
-
 int main(){
-
   char source[LIMIT]; // array to hold input data values
 
   int i;             // loop variable
-  int j;             // loop variable
+  int j;	     // loop variable
   int smallest;      // current smallest element
 
   //seed random numbers
@@ -102,7 +147,6 @@ int main(){
 
   // do the sorthing
   msort(source, 0, LIMIT-1);
-
   
   //print out sorted array in rows of 10
   printf("Destination array:\n");
