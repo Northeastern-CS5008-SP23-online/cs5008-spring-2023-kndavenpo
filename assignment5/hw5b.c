@@ -1,5 +1,5 @@
-// name: <your name here>
-// email: <your email here>
+// name: Katie Davenport
+// email: davenport.k@northeastern.edu
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -31,13 +31,51 @@ char upperChar(char c){
   }
 }
 
-
-
 // pick pivot and then sort small and big parts 
 void quicky(char* data, int left, int right) {
 
-  // ADD YOUR CODE HERE
+// declare variables 
+int i, j; 	// loop variables for the left and right pivot  
+int pivot; 	// pivot point
+char temp;	// temp variable used to swap 
 
+// Base case: an array with 1 element -> return original array 
+
+// Recursive case: an array with more than 1 element (left less than right)
+if(left < right){
+
+pivot = left; 	// choose a pivot - first element is random since unsorted 
+i = left;	// left pointer
+j = right; 	// right pointer 
+
+// Partition step
+// While left pointer is less than right pointer   
+while(i < j){ 
+	// While left pointer value <= pivot value move pointer right 
+	while(upperChar(data[i]) <= upperChar(data[pivot]) && i < right)
+		i++;
+	
+	// While right pointer value > pivot value decrement right pointer
+	while(upperChar(data[j]) > upperChar(data[pivot]))
+		j--;
+	
+	if(i < j){
+		temp = data[i];
+		data[i] = data[j];
+		data[j] = temp;
+	}
+}
+
+// Swap values 
+temp = data[pivot];
+data[pivot] = data[j];
+data[j] = temp; 
+
+// repeat partition step on sub-arrays until base case it reached (sorted)
+quicky(data, left, j-1); 	// sub-array of elements less than pivot
+quicky(data, j+1, right); 	// sub-array of elements greater than pivot 
+
+}
   return;
 }
 
