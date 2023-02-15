@@ -67,15 +67,19 @@ void reverse(List* l, node_t* ptr)
 {
 
 //base case - null list or list with 1 node
-if(ptr == NULL || ptr->next == NULL){
+if(ptr == NULL){ 
 	return;
-	}    
-        
-//insert your code here
-reverse(l, ptr->next);
-ptr->next->next = ptr;	
-ptr->next = NULL;
-return;
+	}
+else if(ptr->next == NULL){	
+	l->head = ptr;
+	return;
+	}
+else{ 
+	reverse(l, ptr->next);
+	ptr->next->next = ptr;	
+	ptr->next = NULL;
+	return;
+	}
 }
 
 /*----Free the nodes-----*/
