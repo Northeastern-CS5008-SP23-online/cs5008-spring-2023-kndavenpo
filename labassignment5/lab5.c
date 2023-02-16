@@ -133,8 +133,6 @@ if (root == NULL){
 } else {
 return root; 
 }    
-    //insert your code here
-
 
 /*updating the height after insertion of the node*/
     root->height = max(height(root->left),height(root->right))+1;
