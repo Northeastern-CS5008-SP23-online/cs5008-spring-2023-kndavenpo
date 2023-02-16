@@ -1,5 +1,5 @@
-/*---enter your name here----*/
-/*---enter your email here-----*/
+/* Katie Davenport */
+/* davenport.k@northeastern.edu */
 
 #include<stdio.h>
 #include<stdlib.h>
@@ -123,9 +123,16 @@ void freenode(node_t *p){
 /* Insert a node like a Binary search tree, then convert it into a AVL tree using four cases*/
 node_t* Insert(node_t* root, int data)
 {
-
     
-    
+if (root == NULL){
+	return NewNode(data);
+} else if (data < root->data){
+	root->left = Insert(root->left, data);
+} else if (data > root->data){
+	root->right = Insert(root->right, data); 
+} else {
+return root; 
+}    
     //insert your code here
 
 
