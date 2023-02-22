@@ -1,5 +1,5 @@
-// name: <your name here>
-// email: <your email here>
+// name: Katie Davenport
+// email: davenport.k@northeastern.edu
 
 // format of document is a bunch of data lines beginning with an integer (rank which we ignore)
 // then a ',' followed by a double-quoted string (city name)
@@ -118,26 +118,40 @@ int stateMachine(int inState, int nextChar, char* temp, char* inputLine, int* li
       state = S3;
       appendChar(temp,inputLine[nextChar]);
     }
-    break;
-         
+    break;      
   case S4:
-
-    // *** YOUR CODE GOES HERE ***
-    
-    break;
-         
+    // looking for a comma
+    if (inputLine[nextChar] == ',') {
+      state = S5;
+    } else {
+      state = ERRORSTATE;
+    }
+    break;    
   case S5:
-
-    // *** YOUR CODE GOES HERE ***
-    
-    break;
-         
+    // looking for a double quote 
+    if (inputLine[nextChar] == '\"') {
+      state = S6;
+    } else {
+      state = ERRORSTATE;
+    }
+    break;    
   case S6:
-
-    // *** YOUR CODE GOES HERE ***
-    
-    break;
-         
+    	// accept anything except a comma until you find a double quote for population 
+    	if (inputLine[nextChar] == '\"') {
+		state = ACCEPTSTATE;
+	// population is complete - copy to destination
+		sscanf(temp, "%d", popInt_p); // sscanf returns popInt by reference
+		strcpy(temp, "");
+    	
+	} else if (isDigit(inputLine[nextChar])) {
+	// build up population if the next character is a digit 
+	state = S6;
+	appendChar(temp, inputLine[nextChar]);
+	} else if (inputLine[nextChar] == ',') {
+	state = S6;
+	}
+      	break;   
+ 
   case ACCEPTSTATE:
     // nothing to do - we are done!
     break;
