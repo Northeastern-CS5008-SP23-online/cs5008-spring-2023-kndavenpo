@@ -1,5 +1,5 @@
-//enter your name here
-//enter your email here
+// Katie Davenport
+// davenport.k@northeastern.edu
 
 #include <stdio.h>
 #include <string.h>
@@ -7,18 +7,33 @@
 
 /* function to encrypt the data*/
 void encrypt(char text[], int key)
-{
-    //insert your code here
+{   
+int length = strlen(text);
+int i;
+for(i=0; i<length; i++) {
+	// Convert to upper case
+	if(isupper(text[i])){
+		text[i] = (text[i]-'A'+key)%26+'A';
+	} else if (islower(text[i])){
+		text[i] = (text[i]-'a'+key)%26+'a';	
+	}
+	}
 }
 
 /*function to decrypt the data*/
 void decrypt(char text[],int key)
-{
-    
-    //insert your code here
-    
+{   
+int length = strlen(text);
+int i;
+for(i=0; i<length; i++) {
+	// Convert to upper case 
+	if(isupper(text[i])){
+		text[i] = (text[i]-'A'-key+26)%26 + 'A';
+	} else if (islower(text[i])){
+		text[i] = (text[i]-'a'-key+26)%26 + 'a';
+	}
+	}
 }
-
 
 /*----------- Main program---------------*/
 int main()
