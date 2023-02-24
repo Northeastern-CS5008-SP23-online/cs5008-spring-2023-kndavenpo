@@ -11,7 +11,6 @@ void encrypt(char text[], int key)
 int length = strlen(text);
 int i;
 for(i=0; i<length; i++) {
-	// Convert to upper case
 	if(isupper(text[i])){
 		text[i] = (text[i]-'A'+key)%26+'A';
 	} else if (islower(text[i])){
@@ -25,8 +24,7 @@ void decrypt(char text[],int key)
 {   
 int length = strlen(text);
 int i;
-for(i=0; i<length; i++) {
-	// Convert to upper case 
+for(i=0; i<length; i++) { 
 	if(isupper(text[i])){
 		text[i] = (text[i]-'A'-key+26)%26 + 'A';
 	} else if (islower(text[i])){
