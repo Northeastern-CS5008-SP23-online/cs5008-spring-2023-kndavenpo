@@ -1,5 +1,5 @@
-// name: <your name here>
-// email: <your email here>
+// name: Katie Davenport
+// email: k.davenport@northeastern.edu
 
 // format of document is a bunch of data lines beginning with an integer (rank which we ignore)
 // then a ',' followed by a double-quoted string (city name)
@@ -65,8 +65,14 @@ int hash1(char* s) {
 // hint: use (int)s[i] to get the integer code of  character in s[i]
 int hash2(char* s) {
   int sumOfS = 0;
+  int i; // loop variable 
 
   //**** YOUR CODE GOES HERE ****
+  int length = strlen(s);
+
+  for(i=0; i<length; i++){
+	sumOfS = sumOfS + (int)s[i];
+  }                  
 
   return (sumOfS % HASHSIZE);
 }
@@ -76,21 +82,22 @@ int hash3(char* s) {
   long productOfS = 1;
 
   //**** YOUR CODE GOES HERE ****
+  productOfS = (int)s[0] * (int)s[1];
 
   return ((int)(productOfS % HASHSIZE));
 }
-
-
-
 
 // add (key k, value v) to hashtable t at location loc
 // hint: use newKeyValue(k,v) to create a new kv pair
 // note that a t is an array of keyvalue pointers
 // return true if successful, false if not
 bool addToHashTable(keyvalue_t* t[], int loc, char* k, int v) {
-  bool result = true;
+   bool result= true;
+
 
   //**** YOUR CODE GOES HERE ****
+  keyvalue_t* kv = newKeyValue(k, v);   // create new key value 
+  t[loc] = kv;				// add key value to hashtable
 
   return result;
 }
