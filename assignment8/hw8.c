@@ -92,14 +92,19 @@ int hash3(char* s) {
 // note that a t is an array of keyvalue pointers
 // return true if successful, false if not
 bool addToHashTable(keyvalue_t* t[], int loc, char* k, int v) {
-   bool result= true;
-
+  bool result= true;
+  keyvalue_t* kv = newKeyValue(k, v);
+  
 
   //**** YOUR CODE GOES HERE ****
-  keyvalue_t* kv = newKeyValue(k, v);   // create new key value 
-  t[loc] = kv;				// add key value to hashtable
-
-  return result;
+  if (t[loc]==NULL){ 
+       t[loc] = kv;
+  	return result;
+  } 
+  keyvalue_t* temp = t[loc];
+  kv->next =  temp;
+  return result;  
+   
 }
 
 // print the linked list pointed to by p
