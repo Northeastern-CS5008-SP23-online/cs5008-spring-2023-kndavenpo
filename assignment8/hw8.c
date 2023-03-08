@@ -67,9 +67,8 @@ int hash2(char* s) {
   int sumOfS = 0;
   int i; // loop variable 
 
-  //**** YOUR CODE GOES HERE ****
+ 
   int length = strlen(s);
-
   for(i=0; i<length; i++){
 	sumOfS = sumOfS + (int)s[i];
   }                  
@@ -81,9 +80,8 @@ int hash2(char* s) {
 int hash3(char* s) {
   long productOfS = 1;
 
-  //**** YOUR CODE GOES HERE ****
   productOfS = (int)s[0] * (int)s[1];
-
+ 
   return ((int)(productOfS % HASHSIZE));
 }
 
@@ -92,19 +90,19 @@ int hash3(char* s) {
 // note that a t is an array of keyvalue pointers
 // return true if successful, false if not
 bool addToHashTable(keyvalue_t* t[], int loc, char* k, int v) {
-  bool result= true;
-  keyvalue_t* kv = newKeyValue(k, v);
+  	bool result= true;
+ 
+	// Check that the location is within the hash size 
+  	if ((0<=loc) && (loc<HASHSIZE)) {
+  	keyvalue_t* kv = newKeyValue(k, v); // Create new kv 
   
-
-  //**** YOUR CODE GOES HERE ****
-  if (t[loc]==NULL){ 
-       t[loc] = kv;
-  	return result;
-  } 
-  keyvalue_t* temp = t[loc];
-  kv->next =  temp;
-  return result;  
-   
+  	// Add kv to the front of the array at the location
+  	kv->next = t[loc];
+  	t[loc] = kv;  
+  	} else {
+ 	result = false; 
+	}
+	return result; 
 }
 
 // print the linked list pointed to by p
