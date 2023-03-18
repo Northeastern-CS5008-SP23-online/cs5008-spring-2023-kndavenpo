@@ -66,9 +66,7 @@ int search(char* name, Graph* graph)
 void addConnection(Graph* graph, char* person, char* friend){
     int p = search(person, graph);//search for the person in the graph
     int n=countNumberofLists(graph);
-    //node* temp;     
     
-/*insert your code here*/
     if(n==0){
 	node* newPerson = createNode(person);
 	graph->adjLists[0] = newPerson; 
