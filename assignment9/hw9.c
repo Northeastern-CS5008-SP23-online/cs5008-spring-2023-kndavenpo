@@ -1,6 +1,5 @@
-// name: <your name here>
-// email: <your email here>
-
+// name: Katie Davenport
+// email: davenport.k@northeastern.edu
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -225,11 +224,22 @@ int main () {
   // add start node to work queue
   enqueue(q,0);
 
-  printf("\nBREADTH FIRST TRAFERSAL\n");
-  while (!isEmpty(q)) {
+  printf("\nBREADTH FIRST TRAVERSAL\n");
+ 
+  while (!isEmpty(q)) {   	
+    	// dequeue the head node and assign to current 
+	current = dequeue(q);
 
-    // INSERT YOUR CODE HERE
-    
+	// if the current node has not been marked as done, printout and enqueue all neighbors 
+	if (!done[current]){
+		printf("NODE: %d\n", current);
+		for (j = 0; j < GSIZE; j++){
+			if(E[current][j]){
+				enqueue(q, j);
+			} 
+		}				
+	done[current] = true; // mark current node as done 
+	}
   }
 
   // print out nodes that are unreachable
