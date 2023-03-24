@@ -1,5 +1,5 @@
-// Enter your name here
-//Enter your email here
+// Katie Davenport
+// davenport.k@northeastern.edu
 
 #include<stdio.h>
 #include<stdlib.h>
@@ -87,28 +87,56 @@ int find_indegree(int arr[][MAX], int node,int n)
 {
     int i,in_deg = 0;
     
-    
-    
+    for(i=1; i<=n; i++){
+	if (arr[i][node] == 1){
+		in_deg++;
+	}
+    }    
+    return in_deg;
 }
+
+
 /*Function to perform topological sorting of the Graph */
 void topologicalOrder(int arr[][MAX], Queue *t, int n)
 {
     int j=0,delNode,i;
     int result[MAX],indeg[MAX];
     
+    for(i=1; i<=n; i++){
+    	indeg[i] = find_indegree(arr, i, n);
+	if(indeg[i] == 0){
+		enqueue(t, i);
+	}
+    }       
     
-    
-    
-    //insert your code here
-    
+    // While queue is not empty
+    while(!isEmpty(t->front)){
+	// Dequeue an element and put it in the result array
+	delNode = dequeue(t);
+	result[j] = delNode; 
+	j++; // makes space to store another element
+    }      	    
+
+	// Check all nodes of the deleted node 
+    	for(i=1; i<=n; i++){
+		// Remove edges connected to deleted node
+		if(arr[delNode][i] == 1){
+			indeg[i] = indeg[i]-1;
+    		}
+	
+		// If new indegree is zero, add edge to the queue
+		if(indeg[i] == 0){
+			enqueue(t, i);
+		}		       
+	}
     
     
     printf("topological ordering\n");
     for(i=0; i<j;i++)
-        printf("%d\t",result[i]);
-    printf("\n");
-    
+    	printf("%d\t",result[i]);
+    printf("\n");   
 }
+
 /*Main Program*/
 int main()
 {
