@@ -115,21 +115,22 @@ void topologicalOrder(int arr[][MAX], Queue *t, int n)
 	delNode = dequeue(t);
 	result[j] = delNode; 
 	j++; // makes space to store another element
-    }      	    
+          	    
 
 	// Check all nodes of the deleted node 
     	for(i=1; i<=n; i++){
 		// Remove edges connected to deleted node
 		if(arr[delNode][i] == 1){
 			indeg[i] = indeg[i]-1;
-    		}
-	
-		// If new indegree is zero, add edge to the queue
-		if(indeg[i] == 0){
-			enqueue(t, i);
+    		
+
+			// If new indegree is zero, add edge to the queue
+			if(indeg[i] == 0){
+				enqueue(t, i);
+			}
 		}		       
 	}
-    
+    }
     
     printf("topological ordering\n");
     for(i=0; i<j;i++)
