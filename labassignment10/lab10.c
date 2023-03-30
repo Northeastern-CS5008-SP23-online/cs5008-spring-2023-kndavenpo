@@ -69,10 +69,7 @@ void partition(int s[], int n, int k)
     int cost;                /* track the minimum cost*/
     int i,j,x;                /* counters */
 
-    
-    
     /*Insert your code here*/
-
 // initialize p[0] to 0
 p[0] = 0;
 
@@ -83,12 +80,12 @@ for (i=1; i<=n; i++){
 
 // the first column of the DP table for values will be the prefix sums array   
 for (i=1; i<=n; i++){
-    m[i,1] = p[i];
+    m[i][1] = p[i];
 }
 
 // the first row of the dp table for values will be the thickness of the first book
 for (j=1; j<=k; j++){
-    m[1,j] = s[1];
+    m[1][j] = s[1];
 }
     
     
