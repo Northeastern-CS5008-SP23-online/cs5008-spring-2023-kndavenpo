@@ -1,5 +1,5 @@
-/* Enter your name here*/
-/* Enter your email here*/
+/* Katie Davenport */
+/* davenport.k@northeastern.edu */
 
 #include<stdio.h>
 #define MAXN 50       /* largest number of books */
@@ -18,8 +18,9 @@ int max(int a, int b)
 /* function to calculate the sum of an array*/
 int sum(int arr[], int from, int to)
 {
+    int i; 	/* counter */
     int total = 0;
-    for (int i = from; i <= to; i++)
+    for (i=from; i <= to; i++)
         total += arr[i];
     return total;
 }
@@ -71,8 +72,24 @@ void partition(int s[], int n, int k)
     
     
     /*Insert your code here*/
-    
-  
+
+// initialize p[0] to 0
+p[0] = 0;
+
+// create a prefix sums array - the cummulative total of the thickness of each book
+for (i=1; i<=n; i++){
+    p[i] = p[i-1] + s[i];
+}   
+
+// the first column of the DP table for values will be the prefix sums array   
+for (i=1; i<=n; i++){
+    m[i,1] = p[i];
+}
+
+// the first row of the dp table for values will be the thickness of the first book
+for (j=1; j<=k; j++){
+    m[1,j] = s[1];
+}
     
     
 /* 2 to k partitions*/
@@ -120,4 +137,4 @@ int main()
 }
 
  
- 
+
