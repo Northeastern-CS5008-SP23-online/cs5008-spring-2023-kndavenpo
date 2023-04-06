@@ -13,16 +13,18 @@ void *philosopher(void *x)
     int n=*a;
 
        /*-----Insert your code here----*/
-    printf("Philosopher %d is thinking.\n", n+1);
-    pthread_mutex_lock(&chopstick[n]); // this needs to be a pointer - address 
-    pthread_mutex_lock(&chopstick[n+1])%5; // this needs to be a pointer - address 
-    printf("Philosopher %d is eating using chopstick[%d] and chopstick[%d].\n", n+1, n, (n+1)%5);
-    sleep(1);
-    printf("Philosopher %d finished eating.\n", n+1);
-    pthread_mutex_unlock(&chopstick[n]);
-    pthread_mutex_unlock(&chopstick[n+1])%5;
-	return NULL;  
+    	printf("Philosopher %d is thinking.\n", n+1);
+    	pthread_mutex_lock(&chopstick[n]); // this needs to be a pointer - address 
+    	pthread_mutex_lock(&chopstick[n+1])%5; // this needs to be a pointer - address 
+    	
+	printf("Philosopher %d is eating using chopstick[%d] and chopstick[%d].\n", n+1, n, (n+1)%5);
+	sleep(1);
     
+	printf("Philosopher %d finished eating.\n", n+1);
+    	pthread_mutex_unlock(&chopstick[n]);
+    	pthread_mutex_unlock(&chopstick[n+1])%5;
+
+    	return NULL;      
 }
 
 
