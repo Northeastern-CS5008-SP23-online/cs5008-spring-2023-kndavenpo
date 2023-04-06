@@ -1,5 +1,5 @@
-//Enter your name here
-//Enter your email here
+//Katie Davenport
+//davenport.k@northeastern.edu
 #include <stdio.h>
 #include <unistd.h>
 #include <pthread.h>
@@ -11,9 +11,17 @@ void *philosopher(void *x)
  //Treat variable x as a pointer to an int and then extract the value into n
     int* a=(int*)x;
     int n=*a;
-    
+
        /*-----Insert your code here----*/
-    
+    printf("Philosopher %d is thinking.\n", n+1);
+    pthread_mutex_lock(&chopstick[n]); // this needs to be a pointer - address 
+    pthread_mutex_lock(&chopstick[n+1])%5; // this needs to be a pointer - address 
+    printf("Philosopher %d is eating using chopstick[%d] and chopstick[%d].\n", n+1, n, (n+1)%5);
+    sleep(1);
+    printf("Philosopher %d finished eating.\n", n+1);
+    pthread_mutex_unlock(&chopstick[n]);
+    pthread_mutex_unlock(&chopstick[n+1])%5;
+	return NULL;  
     
 }
 
