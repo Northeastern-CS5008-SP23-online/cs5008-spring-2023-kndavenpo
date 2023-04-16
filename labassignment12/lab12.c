@@ -5,62 +5,70 @@
 #include<string.h>
 
 int compression(char arr[], int n, char res[]){
-    int j;			//general iterator 
+    int k;			//general iterator 
     int i=1; 			//iterator for input string - initialize to 1 
     char curr = arr[0]; 	//current char - one place behind iterator 
     int count=1; 		//counts run of same letter 
     int index=0; 		//index for result string 
     
-    //Do not compress if string length is less than 2
-    if(n<2){
+    //Do not compress if string length is less than 2    
+   if(n<2){
 	res = arr;
 	printf("Output\n");
-	for(j=0; j=n; j++){
-		printf("%c", res[j]);
+	for(k=0; k<n; k++){
+		printf("%c\n", res[k]);
 	}
 	return n;
     }
-    
+
     //Iterate through the input string 
-    while(i<=n){
+    while(i <= n){
 	//if curr equals i then increment counter and move forward   
-	if( curr == arr[i] ){
+			
+	if(curr == arr[i]){
 		count++;      
-		curr=arr[i++]; 
+		curr=arr[i++];
+		
 	} else {
-	//if curr does not equal i
-	if(curr!=arr[i]){
+
+        //if curr does not equal i
+	if(curr != arr[i]){
 		//add current character to result array
 		res[index++] = curr; // add letter to result array and increment index 
- 		//add the count to the result array if it is greater than 1
+ 		
+		//add the count to the result array if it is greater than 1
 		if(count>1) {
-			char r = 10; // buffer variable 
+			char r[10]; // buffer variable 
 			//convert the count to characters using sprintf 
 			sprintf(r, "%d", count);
 			//add count to result array		
+			int j;
 			for(j=0;j<strlen(r);j++){
 				res[index++]=r[j];
-			}
-			//reset count
-			count=1;  
+			 
+			} 
 		}
 	}
+	//reset count and update current
+	count=1;
+	curr=arr[i++];
     	}
     }
+
     //print the contents of the result array 
-    for(i=0; i=index; i++){
+    for(i=0; i<index; i++){
     	printf("%c", res[i]);
     }
     return index; //the length of the compressed string 
 }	
 
-
 int main()
 {
     char a[]="aaaaaaaaaaaaaabbbbcccd";
     char res[50];
-    int r,n=strlen(a);//n is the size of input array
+    int r;
+    int n=strlen(a);//n is the size of input array
     r=compression(a,n,res);
-    printf("length of the compressed string:%d\n",r);
+    printf("\nLength of the compressed string:%d\n",r);
     return 0;
 }
